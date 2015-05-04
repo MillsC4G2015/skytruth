@@ -41,7 +41,7 @@ for details.
 
       // Initialize the Google Map and add our custom layer overlay.
       function initialize() {
-        var myLatLng = new google.maps.LatLng(41.000, -77.500);
+        var myLatLng = new google.maps.LatLng(-34.397, 150.644);
         var mapOptions = {
           center: myLatLng,
           zoom: 8,
