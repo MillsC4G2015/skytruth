@@ -1,4 +1,4 @@
-application: <your-appid-here>
+application: handle-the-truth-fifteen
 version: 1
 runtime: python27
 api_version: 1
