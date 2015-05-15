@@ -33,7 +33,7 @@ for details.
   <body>
     <div id="test" style="width: 640px; height: 0px;"></div>
     <ul>
-    {% for item in myList -%}
+    {% for item in myList -%}	<!--this jinja code needs further research, because the list items aren't being output onto new lines-->
        {{ item }}
     {%- endfor %}
     </ul>
