@@ -23,19 +23,13 @@ for details.
       * The list generated from the Python script is written to the HTML page display.
       */
 
-     function test() {
-	document.write(TEST);
-     }
-     
-      window.onload = test;
     </script>
   </head>
   <body>
-    <div id="test" style="width: 640px; height: 0px;"></div>
     <ul>
-    {% for item in myList -%}
-       {{ item }}
-    {%- endfor %}
+    {% for item in myList %}
+       <li>{{ item }}</li>
+    {% endfor %}
     </ul>
   </body>
 </html>

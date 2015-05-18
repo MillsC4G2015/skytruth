@@ -45,7 +45,7 @@ class MainPage(webapp2.RequestHandler):
     # helps make the script more readable to pull them out here, especially
     # if this is expanded to include more variables.
     template_values = {
-        'myList': list_as_json					# sends clean image ID list to index.html file to be rendered on a web page once app is deployed
+        'myList': result					# sends clean image ID list to index.html file to be rendered on a web page once app is deployed
     }
     template = jinja_environment.get_template('index.html')
     self.response.out.write(template.render(template_values))

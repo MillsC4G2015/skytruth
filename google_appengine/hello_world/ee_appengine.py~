@@ -8,7 +8,6 @@
 # instructions on how to set up authentication.
 
 import os
-
 import config
 import ee
 import jinja2
