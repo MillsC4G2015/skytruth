@@ -17,6 +17,27 @@ import json
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
+html = """
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Form Example</title>
+	</head>
+	<body>
+		<h1>What Coordinates do you want to see?</h1>
+			<form method="post">
+			<label for="latitude">Latitude:</label>
+			<input name="latitude" type="text" value=""><br>
+
+			<label for="longitude">Longitude:</label>
+			<input name="longitude" type="text" value=""><br>
+			
+			<input name="submit" type="submit" value="Submit">
+			</form>
+	</body>
+</html>
+"""
 
 class MainPage(webapp2.RequestHandler):
   def get(self):                             # pylint: disable=g-bad-name
@@ -45,9 +66,10 @@ class MainPage(webapp2.RequestHandler):
     # helps make the script more readable to pull them out here, especially
     # if this is expanded to include more variables.
     template_values = {
-        'myList': list_as_json					# sends clean image ID list to index.html file to be rendered on a web page once app is deployed
+        'myList': result					# sends clean image ID list to index.html file to be rendered on a web page once app is deployed
     }
     template = jinja_environment.get_template('index.html')
-    self.response.out.write(template.render(template_values))
+    self.response.out.write(html)
+	#self.response.out.write(template.render(template_values))
 
 app = webapp2.WSGIApplication([('/', MainPage)], debug=True)

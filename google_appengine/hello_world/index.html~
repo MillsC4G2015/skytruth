@@ -26,10 +26,10 @@ for details.
     </script>
   </head>
   <body>
-    <ul>
+    <ol>
     {% for item in myList %}
        <li>{{ item }}</li>
     {% endfor %}
-    </ul>
+    </ol>
   </body>
 </html>

@@ -17,19 +17,49 @@ for details.
       * by Earth Engine using the Python script ee_appengine.py.
       */
 // var
-      var IMAGE_ID_LIST = "{{ myList }}";
-
+      var MAPID = "{{ mapid }}";
+      var longitude = "{{ longitude }}";
+      var latitude = "{{ latitude }}";
+      var IMAGE_ID_LIST = "{{ imageIDs }}";
       /**
       * The list generated from the Python script is written to the HTML page display.
       */
+    var eeMapOptions = {
+        getTileUrl: function(tile, zoom) {
+          var url = ['https://earthengine.googleapis.com/map',
+                     MAPID, zoom, tile.x, tile.y].join("/");
+          url += '?token=' + TOKEN
+          return url;
+        },
+        tileSize: new google.maps.Size(256, 256)
+      };
+      // Create the map type.
+      var mapType = new google.maps.ImageMapType(eeMapOptions);
+      // Initialize the Google Map and add our custom layer overlay.
+      function initialize() {
+        var myLatLng = new google.maps.LatLng(latitude, longitude);
+        var mapOptions = {
+          center: myLatLng,
+          zoom: 8,
+          maxZoom: 10,
+          streetViewControl: false
+        };
+        var map = new google.maps.Map(document.getElementById("map"),
+                                      mapOptions);
+        //map.overlayMapTypes.push(mapType);
+      
+      }
 
+      window.onload = initialize;  
     </script>
   </head>
   <body>
+    <div id="map" style="width: 640px; height: 480px;"></div>
+    <h4>Landsat 7 images for your coordinates and date range are:</h4>
     <ol>
-    {% for item in myList %}
+      {% for item in imageIDs %}
        <li>{{ item }}</li>
-    {% endfor %}
+      {% endfor %}
     </ol>
   </body>
 </html>
