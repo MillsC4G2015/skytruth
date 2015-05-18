@@ -27,9 +27,9 @@ for details.
   </head>
   <body>
     <ul>
-    {% for item in myList -%}
+    {% for item in myList %}
        <li>{{ item }}</li>
-    {%- endfor %}
+    {% endfor %}
     </ul>
   </body>
 </html>
